@@ -1,9 +1,8 @@
 package com.lagou.service.impl;
 
+import com.lagou.dao.ResourceCategoryMapper;
 import com.lagou.dao.RoleMapper;
-import com.lagou.domain.Role;
-import com.lagou.domain.RoleMenuVo;
-import com.lagou.domain.Role_menu_relation;
+import com.lagou.domain.*;
 import com.lagou.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +15,9 @@ public class RoleServiceImpl implements RoleService {
 
     @Autowired
     private RoleMapper roleMapper;
+
+    @Autowired
+    private ResourceCategoryMapper resourceCategoryMapper;
 
     @Override
     public List<Role> findAllRole(Role role) {
@@ -90,6 +92,50 @@ public class RoleServiceImpl implements RoleService {
         roleMapper.deleteRoleContextMenu(roleId);
 
         roleMapper.deleteRole(roleId);
+    }
+
+    /*
+        查询该角色的拥有的资源信息
+     */
+    @Override
+    public List<ResourceCategory> findResourceByRoleId(Integer id) {
+
+        //1.查询该角色拥有的资源信息
+        List<Resource> resourceList = roleMapper.findResourceByRoleId(id);
+        //2.查询该角色拥有的资源分类信息
+        List<ResourceCategory> resourceCategoryList = roleMapper.findResourceCategoryByRoleId(id);
+        //3.封装资源数据到分类下
+        for (Resource resource : resourceList) {
+            for (ResourceCategory resourceCategory : resourceCategoryList) {
+                if(resource.getCategoryId() == resourceCategory.getId()){
+                    resourceCategory.getResourceList().add(resource);
+                    break;
+                }
+            }
+        }
+
+        return resourceCategoryList;
+    }
+
+    /*
+        为角色分配资源
+     */
+    @Override
+    public void roleContextResource(RoleResourceVo roleResourceVo) {
+        //清空中间表关系
+        roleMapper.deleteResourceByRoleId(roleResourceVo.getRoleId());
+        //分配资源
+        for (Integer resourceId : roleResourceVo.getResourceIdList()) {
+            RoleResourceRelation roleResourceRelation = new RoleResourceRelation();
+            roleResourceRelation.setRoleId(roleResourceVo.getRoleId());
+            roleResourceRelation.setResourceId(resourceId);
+            Date date = new Date();
+            roleResourceRelation.setCreatedTime(date);
+            roleResourceRelation.setUpdatedTime(date);
+            roleResourceRelation.setCreatedBy("system");
+            roleResourceRelation.setUpdatedBy("system");
+            roleMapper.saveResourceToRoleId(roleResourceRelation);
+        }
     }
 
 

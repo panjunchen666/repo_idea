@@ -117,4 +117,23 @@ public class RoleController {
 
     }
 
+    /*
+         查询该角色的拥有的资源信息
+     */
+    @RequestMapping("/findResourceListByRoleId")
+    public ResponseResult findResourceListByRoleId(Integer roleId) {
+        List<ResourceCategory> resourceList = roleService.findResourceByRoleId(roleId);
+        return new ResponseResult(true, 200, "获取角色资源信息成功", resourceList);
+
+    }
+
+    @RequestMapping("/roleContextResource")
+    public ResponseResult roleContextResource(@RequestBody RoleResourceVo roleResourceVo) {
+        roleService.roleContextResource(roleResourceVo);
+        return new ResponseResult(true,200,"角色分配资源成功",null);
+
+    }
+
+
+
 }

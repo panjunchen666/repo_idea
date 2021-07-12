@@ -1,6 +1,7 @@
 D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\domain\Course.java
 D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\domain\Role_menu_relation.java
 D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\domain\PromotionAd.java
+D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\domain\RoleResourceRelation.java
 D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\domain\UserVo.java
 D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\domain\CourseSection.java
 D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\domain\Menu.java
@@ -10,6 +11,7 @@ D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\d
 D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\domain\CourseVO.java
 D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\domain\Resource.java
 D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\domain\Teacher.java
+D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\domain\RoleResourceVo.java
 D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\domain\CourseLesson.java
 D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\domain\CourseMedia.java
 D:\LAGOUWork\ssm_code\lagou_edu_home_parent\ssm-domain\src\main\java\com\lagou\domain\PromotionSpace.java
